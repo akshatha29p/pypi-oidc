@@ -28,7 +28,6 @@ jobs:
         oidc-provider-name: ap-pypi 
         
    - name: Configure pip client using JFrog CLI with
-   
      run: |
-             jf pip-config --repo-resolve=ap-pypi
-             jf pip install pandas 
+          # Ping the server
+          jf rt ping
