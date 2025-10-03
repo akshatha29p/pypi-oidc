@@ -1,0 +1,37 @@
+name: Push Build to Artifactory    
+
+on: [push]
+permissions:
+  # This is required for requesting the OIDC token
+  id-token: write
+  # This is required for actions/checkout
+  contents: read
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+  
+   steps:
+   # This action checks out the code from the repository
+   - name: Checkout Code 
+     uses: actions/checkout@v4
+
+
+   - name: Set up JFrog CLI
+     id: setup-jfrog-cli
+     uses: jfrog/setup-jfrog-cli@v4
+       
+        
+     env:
+        JF_URL: https://<art-url>/
+     with:
+        oidc-provider-name: tf-oidc 
+        oidc-audience: tf-proj
+        version: '2.78.3'
+
+        
+   - name: Configure pip client using JFrog CLI with
+   
+     run: |
+             jf pip-config --repo-resolve=ank-pypi-remote
+             jf pip install pandas 
