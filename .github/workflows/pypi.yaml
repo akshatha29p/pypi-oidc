@@ -19,14 +19,18 @@ jobs:
 
    - name: Set up JFrog CLI
      id: setup-jfrog-cli
-     uses: jfrog/setup-jfrog-cli@v4 
+     uses: jfrog/setup-jfrog-cli@v4
+       
         
      env:
         JF_URL: ${{ vars.JF_URL }}
      with:
         oidc-provider-name: ap-pypi 
+
+
         
    - name: Configure pip client using JFrog CLI with
+   
      run: |
-          # Ping the server
-          jf rt ping
+       jf show c
+       jf rt ping
