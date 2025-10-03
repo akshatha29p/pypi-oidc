@@ -32,5 +32,5 @@ jobs:
    - name: Configure pip client using JFrog CLI with
    
      run: |
-       jf show c
+       jf c show
        jf rt ping
