@@ -35,5 +35,5 @@ jobs:
      run: |
        jf c show
        jf rt ping
-       jf pip-config --repo-resolve=ap-pypi
+       jf pip-config --repo-deploy=ap-pypi-local --repo-resolve=ap-pypi
        jf pip install pandas
