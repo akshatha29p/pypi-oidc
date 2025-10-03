@@ -23,15 +23,12 @@ jobs:
        
         
      env:
-        JF_URL: https://<art-url>/
+        JF_URL: ${{ vars.JF_URL }}
      with:
-        oidc-provider-name: tf-oidc 
-        oidc-audience: tf-proj
-        version: '2.78.3'
-
+        oidc-provider-name: ap-pypi 
         
    - name: Configure pip client using JFrog CLI with
    
      run: |
-             jf pip-config --repo-resolve=ank-pypi-remote
+             jf pip-config --repo-resolve=ap-pypi
              jf pip install pandas 
